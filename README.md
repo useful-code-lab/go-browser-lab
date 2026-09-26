@@ -1,4 +1,3 @@
-````markdown
 # 🌐 Go Browser
 
 ![Go](https://img.shields.io/badge/Go-1.25+-00ADD8?logo=go)
