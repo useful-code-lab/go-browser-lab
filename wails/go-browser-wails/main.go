@@ -13,26 +13,37 @@ var assets embed.FS
 func main() {
 	app := application.New(application.Options{
 		Name:        "Go Browser",
-		Description: "Простой браузер на Go и Wails",
+		Description: "Полноценный браузер на Go и Wails",
+
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),
 		},
+
 		Mac: application.MacOptions{
 			ApplicationShouldTerminateAfterLastWindowClosed: true,
 		},
 	})
 
-	app.Window.NewWithOptions(application.WebviewWindowOptions{
-		Name:              "browser",
-		Title:             "Go Browser",
-		Width:             1200,
-		Height:            800,
-		MinWidth:          800,
-		MinHeight:         600,
-		BackgroundColour:  application.NewRGB(30, 30, 30),
-		URL:               "/",
-		DevToolsEnabled:   true,
+	// Главное окно с интерфейсом браузера.
+	mainWindow := app.Window.NewWithOptions(application.WebviewWindowOptions{
+		Name:             "browser-ui",
+		Title:            "Go Browser",
+		Width:            1200,
+		Height:           800,
+		MinWidth:         900,
+		MinHeight:        600,
+		BackgroundColour: application.NewRGB(20, 20, 22),
+		URL:              "/",
+		DevToolsEnabled:  true,
 	})
+
+	app.RegisterService(
+		application.NewService(
+			NewBrowserService(mainWindow),
+		),
+	)
+
+	mainWindow.Show()
 
 	if err := app.Run(); err != nil {
 		log.Fatal(err)

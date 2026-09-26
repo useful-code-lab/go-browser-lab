@@ -2,7 +2,11 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Go Browser</title>
 
@@ -11,46 +15,149 @@
 
 <body>
 
-<header class="browser-toolbar">
+<div class="browser">
 
-    <div class="navigation-buttons">
-        <button id="back" title="Назад">←</button>
-        <button id="forward" title="Вперёд">→</button>
-        <button id="reload" title="Обновить">↻</button>
-    </div>
+    <!-- Верхняя панель -->
+    <header class="toolbar">
 
-    <div class="address-container">
-        <input
-            id="address"
-            type="text"
-            value="https://example.com"
-            placeholder="Введите адрес сайта"
-            autocomplete="off"
-            spellcheck="false"
+        <div class="brand">
+            <div class="brand-icon">G</div>
+            <span>Go Browser</span>
+        </div>
+
+        <div class="navigation">
+
+            <button
+                id="back"
+                class="icon-button"
+                title="Назад"
+            >
+                ←
+            </button>
+
+            <button
+                id="forward"
+                class="icon-button"
+                title="Вперёд"
+            >
+                →
+            </button>
+
+            <button
+                id="reload"
+                class="icon-button"
+                title="Обновить"
+            >
+                ↻
+            </button>
+
+            <button
+                id="home"
+                class="icon-button"
+                title="Домой"
+            >
+                ⌂
+            </button>
+
+        </div>
+
+        <form
+            id="address-form"
+            class="address-bar"
         >
 
-        <button id="go" title="Перейти">
-            →
-        </button>
-    </div>
+            <span class="security-icon">
+                🔒
+            </span>
 
-</header>
+            <input
+                id="address"
+                type="text"
+                placeholder="Введите адрес или поисковый запрос"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+            >
 
-<main class="browser-content">
+            <button
+                type="submit"
+                class="go-button"
+                title="Перейти"
+            >
+                →
+            </button>
 
-    <div class="welcome">
-        <h1>Go Browser</h1>
+        </form>
 
-        <p>
-            Браузер на Go и Wails
-        </p>
+    </header>
 
-        <p class="hint">
-            Введите адрес сайта выше
-        </p>
-    </div>
+    <!-- Состояние загрузки -->
+    <div
+        id="loading"
+        class="loading-line"
+    ></div>
 
-</main>
+    <!-- Стартовая страница -->
+    <main
+        id="start-page"
+        class="start-page"
+    >
+
+        <div class="start-content">
+
+            <div class="logo">
+                G
+            </div>
+
+            <h1>
+                Go Browser
+            </h1>
+
+            <p>
+                Быстрый браузер на Go и Wails
+            </p>
+
+            <form
+                id="search-form"
+                class="search-box"
+            >
+
+                <span>⌕</span>
+
+                <input
+                    id="search"
+                    type="text"
+                    placeholder="Введите адрес или поисковый запрос"
+                    autocomplete="off"
+                >
+
+                <button type="submit">
+                    →
+                </button>
+
+            </form>
+
+            <div class="shortcuts">
+
+                <button data-url="https://www.google.com">
+                    Google
+                </button>
+
+                <button data-url="https://github.com">
+                    GitHub
+                </button>
+
+                <button data-url="https://www.youtube.com">
+                    YouTube
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
 
 <script type="module" src="/src/main.ts"></script>
 
