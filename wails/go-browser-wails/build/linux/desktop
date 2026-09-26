@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=My Product
+Comment=A go-browser-wails application
+# The Exec line includes %u to pass the URL to the application
+Exec=/usr/local/bin/go-browser-wails %u
+Terminal=false
+Type=Application
+Icon=go-browser-wails
+Categories=Utility;
+StartupWMClass=go-browser-wails
+
+ 
